@@ -4,6 +4,11 @@ backend:
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
+media_library:
+  name: uploadcare
+  config:
+    publicKey: "demopublickey"
+    previewStep: true
 
 collections:
   - name: "portfolio"
@@ -11,8 +16,9 @@ collections:
     folder: "data"
     create: true
     slug: "{{slug}}"
+    extension: "md"
     fields:
       - { label: "标题", name: "title", widget: "string" }
       - { label: "分类", name: "category", widget: "select", options: ["风光", "人像", "街拍"] }
-      - { label: "图片路径", name: "image", widget: "string", default: "images/portfolio/" }
+      - { label: "图片", name: "image", widget: "image", required: false }
       - { label: "描述", name: "description", widget: "text", required: false }
