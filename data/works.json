@@ -22,5 +22,11 @@
         "category": "风光",
         "image": "images/portfolio/moon-shot2.jpg",
         "description": "静谧夜空"
+    },
+    {
+        "title": "人物肖像",
+        "category": "人像",
+        "image": "images/portfolio/men.jpg",
+        "description": "男士肖像"
     }
 ]
