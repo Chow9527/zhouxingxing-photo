@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定格 · 星光影集</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">星光影集</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">入目</a></li>
+                <li><a href="portfolio.html" class="active">定格</a></li>
+                <li><a href="about.html">镜后</a></li>
+                <li><a href="vlog.html">映画</a></li>
+                <li><a href="contact.html">对话</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 页面内容区域 -->
+    <main>
+        <h1 class="page-title">全部作品</h1>
+        
+        <!-- 分类筛选按钮 -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">全部</button>
+            <button class="filter-btn" data-category="风光">风光</button>
+            <button class="filter-btn" data-category="人像">人像</button>
+            <button class="filter-btn" data-category="街拍">街拍</button>
+        </div>
+
+        <!-- 作品网格 -->
+        <div class="gallery-grid" id="portfolio-grid">
+            <p>加载中...</p>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>© 2026 星光影集 | 联系方式：ztx9527@gmail.com</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

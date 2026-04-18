@@ -1,0 +1,662 @@
+/* 重置样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #fafafa;
+    color: #1a1a1a;
+    line-height: 1.5;
+}
+
+/* 导航栏 */
+.navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #4a4a4a;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 0.25rem;
+}
+
+/* 主要内容区 */
+main {
+    min-height: 70vh;
+    padding: 3rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 页脚 */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background: #ffffff;
+    border-top: 1px solid #eaeaea;
+    color: #6c6c6c;
+    font-size: 0.85rem;
+}
+
+/* Hero 大图区域 */
+.hero {
+    height: 70vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/hero/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.hero-content {
+    padding: 1rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.hero-btn {
+    display: inline-block;
+    background: white;
+    color: #1a1a1a;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 40px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* 格言区域 */
+.quote {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: #f5f5f5;
+    margin-bottom: 3rem;
+    border-radius: 12px;
+}
+
+.quote p {
+    font-size: 1.3rem;
+    color: #2c2c2c;
+    font-style: italic;
+}
+
+.quote span {
+    display: block;
+    margin-top: 0.5rem;
+    color: #6c6c6c;
+}
+
+/* 精选作品区域 */
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* 作品卡片样式（所有屏幕宽度都生效） */
+.gallery-item {
+    overflow: hidden;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item .info {
+    padding: 0.75rem 1rem;
+}
+
+.gallery-item .title {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.gallery-item .category {
+    font-size: 0.8rem;
+    color: #8e8e93;
+    margin-top: 0.25rem;
+}
+
+/* 作品集页面专属样式 */
+.page-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+/* 分类筛选按钮 - 毛玻璃质感版 */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #2c2c2c;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+    background: white;
+    border-color: rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.filter-btn.active {
+    background: #1a1a1a;
+    color: white;
+    border-color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .nav-menu {
+        gap: 1.25rem;
+    }
+    main {
+        padding: 2rem 1rem;
+    }
+    .hero {
+        height: 50vh;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .quote p {
+        font-size: 1rem;
+    }
+}
+/* 关于页专属样式 */
+.about-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* 左侧照片 */
+.about-photo {
+    position: sticky;
+    top: 100px;
+}
+
+.about-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
+    object-fit: cover;
+}
+
+/* 右侧信息 */
+.about-name {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.about-tagline {
+    color: #6c6c6c;
+    font-size: 1rem;
+    border-left: 3px solid #1a1a1a;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.about-section {
+    margin-bottom: 2rem;
+}
+
+.about-section h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.3px;
+}
+
+.about-section p {
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+}
+
+/* 器材列表 */
+.equipment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.equipment-list li {
+    padding: 0.5rem 0;
+    color: #4a4a4a;
+    border-bottom: 1px dashed #eaeaea;
+}
+
+/* 爱好标签 */
+.hobby-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.hobby-tags span {
+    background: #f0f0f0;
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    color: #3a3a3a;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .about-photo {
+        position: static;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .about-name {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .about-tagline {
+        text-align: center;
+        border-left: none;
+        padding-left: 0;
+    }
+}
+/* 联系页专属样式 */
+.contact-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+}
+
+/* 左侧表单 */
+.contact-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid #f0f0f0;
+}
+
+.contact-form h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-intro {
+    color: #6c6c6c;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border 0.2s;
+    background: #fafafa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1a1a1a;
+    background: white;
+}
+
+.submit-btn {
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background: #333;
+}
+
+.form-note {
+    font-size: 0.75rem;
+    color: #8e8e93;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* 右侧二维码区 */
+.qrcode-intro {
+    margin-bottom: 1.5rem;
+}
+
+.qrcode-intro h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.qrcode-intro p {
+    color: #6c6c6c;
+    font-size: 0.9rem;
+}
+
+.qrcode-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.qrcode-item {
+    text-align: center;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 16px;
+    border: 1px solid #f0f0f0;
+    transition: transform 0.2s;
+}
+
+.qrcode-item:hover {
+    transform: translateY(-3px);
+}
+
+.qrcode-item img {
+    width: 100%;
+    max-width: 140px;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 12px;
+}
+
+.qrcode-item span {
+    display: block;
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+}
+
+.qrcode-item small {
+    font-size: 0.7rem;
+    color: #8e8e93;
+}
+
+/* 约拍说明 */
+.shoot-info {
+    background: #f5f5f5;
+    padding: 1rem 1.2rem;
+    border-radius: 16px;
+    margin-bottom: 1.2rem;
+}
+
+.shoot-info h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.shoot-info p {
+    font-size: 0.85rem;
+    color: #4a4a4a;
+}
+
+.shoot-note {
+    font-size: 0.8rem;
+    color: #6c6c6c;
+    margin-top: 0.3rem;
+}
+
+/* 邮箱备用 */
+.email-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 40px;
+    border: 1px solid #eaeaea;
+}
+
+.email-info a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.email-info small {
+    color: #8e8e93;
+    font-size: 0.7rem;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .qrcode-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* Vlog页专属样式 */
+.vlog-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.vlog-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.vlog-intro {
+    color: #6c6c6c;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* 视频网格 */
+.vlog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* 视频卡片 */
+.vlog-item {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.vlog-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+/* 视频容器 16:9 */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    background: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 视频信息 */
+.vlog-info {
+    padding: 1rem;
+}
+
+.vlog-info h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #1a1a1a;
+}
+
+.vlog-info p {
+    font-size: 0.85rem;
+    color: #6c6c6c;
+    margin-bottom: 0.3rem;
+}
+
+.vlog-date {
+    font-size: 0.7rem;
+    color: #aaa;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .vlog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
