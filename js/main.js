@@ -34,7 +34,7 @@ function renderWorks(works, containerId) {
 // 精选作品（首页用）
 async function renderFeatured() {
     const works = await loadWorks();
-    const featured = works.slice(0, 4);
+    const featured = works.slice(0, 6);
     renderWorks(featured, 'featured-grid');
 }
 
