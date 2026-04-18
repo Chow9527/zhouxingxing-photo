@@ -3,48 +3,492 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>定格 · 星光影集</title>
+    <title>私房 · 星光影集</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 系列卡片样式 */
+        .series-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .series-card {
+            background: #fff;
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .series-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+        }
+        
+        .series-cover {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+        }
+        
+        .series-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .series-card:hover .series-cover img {
+            transform: scale(1.05);
+        }
+        
+        .series-info {
+            padding: 1.5rem;
+        }
+        
+        .series-name {
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        
+        .series-photo-count {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #6c6c6c;
+            margin-bottom: 0.75rem;
+            letter-spacing: 1px;
+        }
+        
+        .series-description {
+            font-size: 0.85rem;
+            color: #4a4a4a;
+            line-height: 1.5;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        /* 系列详情页样式 */
+        .series-detail {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .series-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .series-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .series-meta {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #6c6c6c;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .series-description-full {
+            font-size: 1rem;
+            color: #4a4a4a;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 700;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid #1a1a1a;
+            margin-bottom: 2rem;
+        }
+        
+        .back-link:hover {
+            background: white;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* 图片预览模态框 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .modal-content {
+            margin: 10% auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #bbb;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .series-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .series-cover {
+                height: 200px;
+            }
+            
+            .series-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">星光影集</a>
             <ul class="nav-menu">
-                <li><a href="index.html">入目</a></li>
-                <li><a href="portfolio.html" class="active">定格</a></li>
-                <li><a href="about.html">镜后</a></li>
-                <li><a href="vlog.html">映画</a></li>
-                <li><a href="contact.html">对话</a></li>
+                <li><a href="index.html"><span class="zh">光影</span><span class="en">LIGHT</span></a></li>
+                <li><a href="portfolio.html" class="active"><span class="zh">私房</span><span class="en">SECRET</span></a></li>
+                <li><a href="about.html"><span class="zh">镜后</span><span class="en">BEHIND</span></a></li>
+                <li><a href="vlog.html"><span class="zh">次元</span><span class="en">COSMIC</span></a></li>
+                <li><a href="contact.html"><span class="zh">约拍</span><span class="en">HIRE</span></a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- 页面内容区域 -->
     <main>
-        <h1 class="page-title">全部作品</h1>
+        <h1 class="page-title">私房系列</h1>
         
-        <!-- 分类筛选按钮 -->
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-category="all">全部</button>
-            <button class="filter-btn" data-category="风光">风光</button>
-            <button class="filter-btn" data-category="人像">人像</button>
-            <button class="filter-btn" data-category="街拍">街拍</button>
-        </div>
-
-        <!-- 作品网格 -->
-        <div class="gallery-grid" id="portfolio-grid">
+        <!-- 系列卡片网格 -->
+        <div class="series-grid" id="series-grid">
             <p>加载中...</p>
         </div>
     </main>
 
-    <!-- 页脚 -->
     <footer class="footer">
         <p>© 2026 星光影集 | 联系方式：ztx9527@gmail.com</p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- 图片预览模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // 系列数据 - 根据实际文件夹结构
+        const seriesData = [
+            {
+                id: 'series-3',
+                name: '系列 3',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-3/photo_1_2026-04-18_22-16-54.jpg',
+                photoCount: 6,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-3/photo_1_2026-04-18_22-16-54.jpg',
+                    'images/portfolio/series-3/photo_2_2026-04-18_22-16-54.jpg',
+                    'images/portfolio/series-3/photo_3_2026-04-18_22-16-54.jpg',
+                    'images/portfolio/series-3/photo_4_2026-04-18_22-16-54.jpg',
+                    'images/portfolio/series-3/photo_5_2026-04-18_22-16-54.jpg',
+                    'images/portfolio/series-3/photo_6_2026-04-18_22-16-54.jpg'
+                ]
+            },
+            {
+                id: 'series-4',
+                name: '系列 4',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-4/photo_1_2026-04-18_22-17-15.jpg',
+                photoCount: 8,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-4/photo_1_2026-04-18_22-17-15.jpg',
+                    'images/portfolio/series-4/photo_2_2026-04-18_22-17-15.jpg',
+                    'images/portfolio/series-4/photo_3_2026-04-18_22-17-15.jpg',
+                    'images/portfolio/series-4/photo_4_2026-04-18_22-17-15.jpg',
+                    'images/portfolio/series-4/photo_5_2026-04-18_22-17-15.jpg',
+                    'images/portfolio/series-4/photo_6_2026-04-18_22-17-15.jpg',
+                    'images/portfolio/series-4/photo_7_2026-04-18_22-17-15.jpg',
+                    'images/portfolio/series-4/photo_8_2026-04-18_22-17-15.jpg'
+                ]
+            },
+            {
+                id: 'series-5',
+                name: '系列 5',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-5/photo_1_2026-04-18_22-17-47.jpg',
+                photoCount: 5,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-5/photo_1_2026-04-18_22-17-47.jpg',
+                    'images/portfolio/series-5/photo_2_2026-04-18_22-17-47.jpg',
+                    'images/portfolio/series-5/photo_3_2026-04-18_22-17-47.jpg',
+                    'images/portfolio/series-5/photo_4_2026-04-18_22-17-47.jpg',
+                    'images/portfolio/series-5/photo_5_2026-04-18_22-17-47.jpg'
+                ]
+            },
+            {
+                id: 'series-5-alt',
+                name: '系列 5 特别版',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-5-alt/photo_1_2026-04-18_22-15-33.jpg',
+                photoCount: 5,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-5-alt/photo_1_2026-04-18_22-15-33.jpg',
+                    'images/portfolio/series-5-alt/photo_2_2026-04-18_22-15-33.jpg',
+                    'images/portfolio/series-5-alt/photo_3_2026-04-18_22-15-33.jpg',
+                    'images/portfolio/series-5-alt/photo_4_2026-04-18_22-15-33.jpg',
+                    'images/portfolio/series-5-alt/photo_5_2026-04-18_22-15-33.jpg'
+                ]
+            },
+            {
+                id: 'series-6',
+                name: '系列 6',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-6/photo_1_2026-04-18_22-18-04.jpg',
+                photoCount: 6,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-6/photo_1_2026-04-18_22-18-04.jpg',
+                    'images/portfolio/series-6/photo_2_2026-04-18_22-18-04.jpg',
+                    'images/portfolio/series-6/photo_3_2026-04-18_22-18-04.jpg',
+                    'images/portfolio/series-6/photo_4_2026-04-18_22-18-04.jpg',
+                    'images/portfolio/series-6/photo_5_2026-04-18_22-18-04.jpg',
+                    'images/portfolio/series-6/photo_6_2026-04-18_22-18-04.jpg'
+                ]
+            },
+            {
+                id: 'series-6-alt',
+                name: '系列 6 特别版',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-6-alt/photo_1_2026-04-18_22-16-13.jpg',
+                photoCount: 9,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-6-alt/photo_1_2026-04-18_22-16-13.jpg',
+                    'images/portfolio/series-6-alt/photo_2_2026-04-18_22-16-13.jpg',
+                    'images/portfolio/series-6-alt/photo_3_2026-04-18_22-16-13.jpg',
+                    'images/portfolio/series-6-alt/photo_4_2026-04-18_22-16-13.jpg',
+                    'images/portfolio/series-6-alt/photo_5_2026-04-18_22-16-13.jpg',
+                    'images/portfolio/series-6-alt/photo_6_2026-04-18_22-16-13.jpg',
+                    'images/portfolio/series-6-alt/photo_7_2026-04-18_22-16-13.jpg',
+                    'images/portfolio/series-6-alt/photo_8_2026-04-18_22-16-13.jpg',
+                    'images/portfolio/series-6-alt/photo_9_2026-04-18_22-16-13.jpg'
+                ]
+            },
+            {
+                id: 'series-7',
+                name: '系列 7',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-7/photo_1_2026-04-18_22-18-35.jpg',
+                photoCount: 10,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-7/photo_1_2026-04-18_22-18-35.jpg',
+                    'images/portfolio/series-7/photo_2_2026-04-18_22-18-35.jpg',
+                    'images/portfolio/series-7/photo_3_2026-04-18_22-18-35.jpg',
+                    'images/portfolio/series-7/photo_4_2026-04-18_22-18-35.jpg',
+                    'images/portfolio/series-7/photo_5_2026-04-18_22-18-35.jpg',
+                    'images/portfolio/series-7/photo_6_2026-04-18_22-18-35.jpg',
+                    'images/portfolio/series-7/photo_7_2026-04-18_22-18-35.jpg',
+                    'images/portfolio/series-7/photo_8_2026-04-18_22-18-35.jpg',
+                    'images/portfolio/series-7/photo_9_2026-04-18_22-18-35.jpg',
+                    'images/portfolio/series-7/photo_10_2026-04-18_22-18-35.jpg'
+                ]
+            },
+            {
+                id: 'series-8',
+                name: '系列 8',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-8/photo_1_2026-04-18_22-18-53.jpg',
+                photoCount: 4,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-8/photo_1_2026-04-18_22-18-53.jpg',
+                    'images/portfolio/series-8/photo_2_2026-04-18_22-18-53.jpg',
+                    'images/portfolio/series-8/photo_3_2026-04-18_22-18-53.jpg',
+                    'images/portfolio/series-8/photo_4_2026-04-18_22-18-53.jpg'
+                ]
+            },
+            {
+                id: 'series-9',
+                name: '系列 9',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-9/photo_1_2026-04-18_22-19-40.jpg',
+                photoCount: 4,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-9/photo_1_2026-04-18_22-19-40.jpg',
+                    'images/portfolio/series-9/photo_2_2026-04-18_22-19-40.jpg',
+                    'images/portfolio/series-9/photo_3_2026-04-18_22-19-40.jpg',
+                    'images/portfolio/series-9/photo_4_2026-04-18_22-19-40.jpg'
+                ]
+            },
+            {
+                id: 'series-10',
+                name: '系列 10',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-10/photo_1_2026-04-18_22-20-16.jpg',
+                photoCount: 4,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-10/photo_1_2026-04-18_22-20-16.jpg',
+                    'images/portfolio/series-10/photo_2_2026-04-18_22-20-16.jpg',
+                    'images/portfolio/series-10/photo_3_2026-04-18_22-20-16.jpg',
+                    'images/portfolio/series-10/photo_4_2026-04-18_22-20-16.jpg'
+                ]
+            },
+            {
+                id: 'series-11',
+                name: '系列 11',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-11/photo_1_2026-04-18_22-21-08.jpg',
+                photoCount: 4,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-11/photo_1_2026-04-18_22-21-08.jpg',
+                    'images/portfolio/series-11/photo_2_2026-04-18_22-21-08.jpg',
+                    'images/portfolio/series-11/photo_3_2026-04-18_22-21-08.jpg',
+                    'images/portfolio/series-11/photo_4_2026-04-18_22-21-08.jpg'
+                ]
+            },
+            {
+                id: 'series-12',
+                name: '系列 12',
+                description: '精选摄影作品系列',
+                cover: 'images/portfolio/series-12/photo_1_2026-04-18_22-21-25.jpg',
+                photoCount: 7,
+                date: '2026-04-18',
+                photos: [
+                    'images/portfolio/series-12/photo_1_2026-04-18_22-21-25.jpg',
+                    'images/portfolio/series-12/photo_2_2026-04-18_22-21-25.jpg',
+                    'images/portfolio/series-12/photo_3_2026-04-18_22-21-25.jpg',
+                    'images/portfolio/series-12/photo_4_2026-04-18_22-21-25.jpg',
+                    'images/portfolio/series-12/photo_5_2026-04-18_22-21-25.jpg',
+                    'images/portfolio/series-12/photo_6_2026-04-18_22-21-25.jpg',
+                    'images/portfolio/series-12/photo_7_2026-04-18_22-21-25.jpg'
+                ]
+            }
+        ];
+
+        // 渲染系列卡片
+        function renderSeries() {
+            const container = document.getElementById('series-grid');
+            if (!container) return;
+            
+            container.innerHTML = seriesData.map(series => `
+                <div class="series-card" onclick="viewSeries('${series.id}')">
+                    <div class="series-cover">
+                        <img src="${series.cover}" alt="${series.name}" loading="lazy">
+                    </div>
+                    <div class="series-info">
+                        <h3 class="series-name">${series.name}</h3>
+                        <p class="series-photo-count">${series.photoCount}张照片</p>
+                        <p class="series-description">${series.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 查看系列详情
+        function viewSeries(seriesId) {
+            const series = seriesData.find(s => s.id === seriesId);
+            if (!series) return;
+            
+            // 创建系列详情页面内容
+            const mainContent = document.querySelector('main');
+            mainContent.innerHTML = `
+                <div class="series-detail">
+                    <a href="portfolio.html" class="back-link">返回系列列表</a>
+                    <div class="series-header">
+                        <h1 class="series-title">${series.name}</h1>
+                        <p class="series-meta">${series.photoCount}张照片 · ${series.date}</p>
+                        <p class="series-description-full">${series.description}</p>
+                    </div>
+                    <div class="gallery-grid">
+                        ${series.photos.map(photo => `
+                            <div class="gallery-item" onclick="openModal('${photo}')" style="cursor: pointer;">
+                                <img src="${photo}" alt="${series.name}" loading="lazy">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 图片预览功能
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        
+        // 打开预览
+        function openModal(imgSrc) {
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+        }
+        
+        // 关闭预览
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSeries();
+        });
+    </script>
 </body>
 </html>

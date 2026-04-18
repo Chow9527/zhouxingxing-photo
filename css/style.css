@@ -3,10 +3,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* 禁止选择文本和图片 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    user-drag: none;
 }
 
 body {
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Arial Black', 'Microsoft YaHei', sans-serif;
     background: #fafafa;
     color: #1a1a1a;
     line-height: 1.5;
@@ -15,8 +22,8 @@ body {
 /* 导航栏 */
 .navbar {
     background: #ffffff;
-    border-bottom: 1px solid #eaeaea;
-    padding: 1rem 0;
+    border-bottom: 2px solid #1a1a1a;
+    padding: 1.5rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -33,31 +40,67 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 900;
     text-decoration: none;
     color: #1a1a1a;
-    letter-spacing: -0.02em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .nav-menu {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     list-style: none;
 }
 
 .nav-menu a {
     text-decoration: none;
     color: #4a4a4a;
-    font-weight: 500;
-    transition: color 0.2s;
+    font-weight: 900;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding: 0.5rem 0;
 }
 
-.nav-menu a:hover,
+/* 中文和英文分行 */
+.nav-menu a .zh {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.nav-menu a .en {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: #8e8e93;
+    margin-top: 2px;
+    letter-spacing: 1px;
+}
+
+/* 悬停效果 */
+.nav-menu a:hover {
+    color: #1a1a1a;
+    transform: translateY(-2px);
+}
+
+.nav-menu a:hover .en {
+    color: #1a1a1a;
+}
+
+/* 当前激活页面 */
 .nav-menu a.active {
     color: #1a1a1a;
-    border-bottom: 2px solid #1a1a1a;
+    border-bottom: 3px solid #1a1a1a;
     padding-bottom: 0.25rem;
+}
+
+.nav-menu a.active .en {
+    color: #1a1a1a;
 }
 
 /* 主要内容区 */
@@ -73,9 +116,12 @@ main {
     text-align: center;
     padding: 2rem;
     background: #ffffff;
-    border-top: 1px solid #eaeaea;
+    border-top: 2px solid #1a1a1a;
     color: #6c6c6c;
     font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* Hero 大图区域 */
@@ -97,32 +143,41 @@ main {
 }
 
 .hero-title {
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
     opacity: 0.9;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .hero-btn {
     display: inline-block;
     background: white;
     color: #1a1a1a;
-    padding: 0.75rem 2rem;
+    padding: 1rem 2.5rem;
     text-decoration: none;
-    font-weight: 500;
-    border-radius: 40px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: 900;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 3px solid white;
 }
 
 .hero-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background: transparent;
+    color: white;
 }
 
 /* 格言区域 */
@@ -131,27 +186,34 @@ main {
     padding: 3rem 1rem;
     background: #f5f5f5;
     margin-bottom: 3rem;
-    border-radius: 12px;
+    border-radius: 0;
+    border: 1px solid #eaeaea;
 }
 
 .quote p {
     font-size: 1.3rem;
     color: #2c2c2c;
     font-style: italic;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .quote span {
     display: block;
     margin-top: 0.5rem;
     color: #6c6c6c;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* 精选作品区域 */
 .section-title {
     text-align: center;
-    font-size: 1.8rem;
-    font-weight: 500;
+    font-size: 2.5rem;
+    font-weight: 900;
     margin-bottom: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .gallery-grid {
@@ -164,21 +226,27 @@ main {
 .gallery-item {
     overflow: hidden;
     background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid #eaeaea;
 }
 
 .gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.15);
 }
 
 .gallery-item img {
     width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     display: block;
+    max-height: 400px;
+    margin: 0 auto;
+    /* 防止拖拽和右键保存 */
+    pointer-events: none;
+    -webkit-touch-callout: none;
 }
 
 .gallery-item .info {
@@ -186,57 +254,66 @@ main {
 }
 
 .gallery-item .title {
-    font-weight: 500;
-    font-size: 0.95rem;
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .gallery-item .category {
     font-size: 0.8rem;
     color: #8e8e93;
     margin-top: 0.25rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* 作品集页面专属样式 */
 .page-title {
     text-align: center;
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: 2.5rem;
+    font-weight: 900;
     margin-bottom: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-/* 分类筛选按钮 - 毛玻璃质感版 */
+/* 分类筛选按钮 */
 .filter-buttons {
     display: flex;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 1rem;
     flex-wrap: wrap;
     margin-bottom: 3rem;
 }
 
 .filter-btn {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 0.6rem 1.5rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #2c2c2c;
+    background: white;
+    border: 2px solid #1a1a1a;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #1a1a1a;
     cursor: pointer;
-    border-radius: 40px;
-    transition: all 0.25s ease;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .filter-btn:hover {
-    background: white;
-    border-color: rgba(0, 0, 0, 0.2);
-    transform: translateY(-1px);
+    background: #1a1a1a;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .filter-btn.active {
     background: #1a1a1a;
     color: white;
     border-color: #1a1a1a;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
 }
 
 /* 响应式调整 */
@@ -255,15 +332,19 @@ main {
         height: 50vh;
     }
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
     .quote p {
         font-size: 1rem;
     }
+    .section-title {
+        font-size: 2rem;
+    }
 }
+
 /* 关于页专属样式 */
 .about-page {
     max-width: 1100px;
@@ -287,25 +368,32 @@ main {
 .about-photo img {
     width: 100%;
     height: auto;
-    border-radius: 20px;
+    border-radius: 0;
     box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
     object-fit: cover;
+    border: 2px solid #1a1a1a;
+    /* 防止拖拽和右键保存 */
+    pointer-events: none;
+    -webkit-touch-callout: none;
 }
 
 /* 右侧信息 */
 .about-name {
-    font-size: 2.5rem;
-    font-weight: 600;
+    font-size: 3rem;
+    font-weight: 900;
     margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .about-tagline {
     color: #6c6c6c;
-    font-size: 1rem;
-    border-left: 3px solid #1a1a1a;
+    font-size: 1.1rem;
+    border-left: 4px solid #1a1a1a;
     padding-left: 1rem;
     margin-bottom: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .about-section {
@@ -313,16 +401,18 @@ main {
 }
 
 .about-section h2 {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 900;
     margin-bottom: 0.75rem;
-    letter-spacing: -0.3px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .about-section p {
     color: #4a4a4a;
     line-height: 1.7;
     margin-bottom: 0.75rem;
+    font-weight: 700;
 }
 
 /* 器材列表 */
@@ -334,7 +424,9 @@ main {
 .equipment-list li {
     padding: 0.5rem 0;
     color: #4a4a4a;
-    border-bottom: 1px dashed #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* 爱好标签 */
@@ -346,11 +438,14 @@ main {
 }
 
 .hobby-tags span {
-    background: #f0f0f0;
+    background: #1a1a1a;
+    color: white;
     padding: 0.4rem 1rem;
-    border-radius: 40px;
+    border-radius: 0;
     font-size: 0.85rem;
-    color: #3a3a3a;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* 响应式 */
@@ -367,7 +462,7 @@ main {
     }
     
     .about-name {
-        font-size: 2rem;
+        font-size: 2.5rem;
         text-align: center;
     }
     
@@ -377,6 +472,7 @@ main {
         padding-left: 0;
     }
 }
+
 /* 联系页专属样式 */
 .contact-page {
     max-width: 1100px;
@@ -394,21 +490,25 @@ main {
 .contact-form {
     background: #fff;
     padding: 2rem;
-    border-radius: 20px;
+    border-radius: 0;
     box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-    border: 1px solid #f0f0f0;
+    border: 2px solid #1a1a1a;
 }
 
 .contact-form h2 {
-    font-size: 1.6rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 900;
     margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .form-intro {
     color: #6c6c6c;
     font-size: 0.85rem;
     margin-bottom: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .form-group {
@@ -419,12 +519,13 @@ main {
 .form-group textarea {
     width: 100%;
     padding: 0.9rem 1rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
+    border: 2px solid #1a1a1a;
+    border-radius: 0;
     font-size: 0.9rem;
     font-family: inherit;
-    transition: border 0.2s;
+    transition: all 0.3s ease;
     background: #fafafa;
+    font-weight: 700;
 }
 
 .form-group input:focus,
@@ -432,23 +533,30 @@ main {
     outline: none;
     border-color: #1a1a1a;
     background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .submit-btn {
     background: #1a1a1a;
     color: white;
-    border: none;
-    padding: 0.9rem 1.5rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 40px;
+    border: 3px solid #1a1a1a;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 900;
+    border-radius: 0;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
     width: 100%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .submit-btn:hover {
-    background: #333;
+    background: white;
+    color: #1a1a1a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .form-note {
@@ -456,6 +564,8 @@ main {
     color: #8e8e93;
     margin-top: 1rem;
     text-align: center;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* 右侧二维码区 */
@@ -464,14 +574,18 @@ main {
 }
 
 .qrcode-intro h2 {
-    font-size: 1.6rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 900;
     margin-bottom: 0.3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .qrcode-intro p {
     color: #6c6c6c;
     font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .qrcode-grid {
@@ -485,13 +599,14 @@ main {
     text-align: center;
     background: #fff;
     padding: 1rem;
-    border-radius: 16px;
-    border: 1px solid #f0f0f0;
-    transition: transform 0.2s;
+    border-radius: 0;
+    border: 2px solid #1a1a1a;
+    transition: transform 0.3s ease;
 }
 
 .qrcode-item:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
 }
 
 .qrcode-item img {
@@ -499,44 +614,58 @@ main {
     max-width: 140px;
     height: auto;
     margin-bottom: 0.5rem;
-    border-radius: 12px;
+    border-radius: 0;
+    border: 1px solid #eaeaea;
+    /* 防止拖拽和右键保存 */
+    pointer-events: none;
+    -webkit-touch-callout: none;
 }
 
 .qrcode-item span {
     display: block;
-    font-weight: 500;
+    font-weight: 900;
     font-size: 0.85rem;
     margin-bottom: 0.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .qrcode-item small {
     font-size: 0.7rem;
     color: #8e8e93;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* 约拍说明 */
 .shoot-info {
     background: #f5f5f5;
     padding: 1rem 1.2rem;
-    border-radius: 16px;
+    border-radius: 0;
     margin-bottom: 1.2rem;
+    border: 1px solid #eaeaea;
 }
 
 .shoot-info h3 {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 900;
     margin-bottom: 0.3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .shoot-info p {
     font-size: 0.85rem;
     color: #4a4a4a;
+    font-weight: 700;
 }
 
 .shoot-note {
     font-size: 0.8rem;
     color: #6c6c6c;
     margin-top: 0.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* 邮箱备用 */
@@ -548,19 +677,23 @@ main {
     flex-wrap: wrap;
     padding: 1rem;
     background: #fff;
-    border-radius: 40px;
-    border: 1px solid #eaeaea;
+    border-radius: 0;
+    border: 2px solid #1a1a1a;
 }
 
 .email-info a {
     color: #1a1a1a;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .email-info small {
     color: #8e8e93;
     font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* 响应式 */
@@ -574,6 +707,7 @@ main {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 /* Vlog页专属样式 */
 .vlog-page {
     max-width: 1100px;
@@ -586,10 +720,20 @@ main {
     margin-bottom: 2.5rem;
 }
 
+.vlog-header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 .vlog-intro {
     color: #6c6c6c;
     font-size: 1rem;
     margin-top: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* 视频网格 */
@@ -602,15 +746,16 @@ main {
 /* 视频卡片 */
 .vlog-item {
     background: #fff;
-    border-radius: 16px;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid #1a1a1a;
 }
 
 .vlog-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.15);
 }
 
 /* 视频容器 16:9 */
@@ -636,21 +781,26 @@ main {
 }
 
 .vlog-info h3 {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 900;
     margin-bottom: 0.3rem;
     color: #1a1a1a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .vlog-info p {
     font-size: 0.85rem;
     color: #6c6c6c;
     margin-bottom: 0.3rem;
+    font-weight: 700;
 }
 
 .vlog-date {
     font-size: 0.7rem;
     color: #aaa;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* 响应式 */

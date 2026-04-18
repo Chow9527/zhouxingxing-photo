@@ -64,8 +64,29 @@ async function initPortfolio() {
     });
 }
 
+// 防止右键保存图片
+function protectImages() {
+    // 禁止右键菜单
+    document.addEventListener('contextmenu', function(e) {
+        // 只禁止图片上的右键
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+    
+    // 禁止拖拽图片
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+}
+
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', () => {
+    // 防止右键保存图片
+    protectImages();
+    
     // 首页精选作品
     if (document.getElementById('featured-grid')) {
         renderFeatured();
